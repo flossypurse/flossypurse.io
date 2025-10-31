@@ -15,10 +15,11 @@
     "astro": "^4.10.2",
     "unocss": "^0.58.9",
     "@unocss/reset": "^0.58.9",
-    "unocss-preset-scrollbar": "^0.3.7"
+    "unocss-preset-scrollbar": "^3.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.30",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "@types/bun": "latest"
   }
 }
