@@ -1,0 +1,85 @@
+<section id="experiments" class="mx-auto mt-24 w-full max-w-6xl px-6">
+  <div class="grid gap-10 rounded-[2.75rem] border border-white/10 bg-white/5 p-12 md:grid-cols-[0.9fr_1.1fr]">
+    <div class="space-y-4">
+      <h2 class="section-title">Lab notes & side quests</h2>
+      <p class="section-subtitle">
+        Weekly explorations blending code, sound, and speculative design. Spin the dial to peek behind the curtain.
+      </p>
+      <div class="flex gap-3">
+        <button class="btn text-xs" type="button" data-carousel="prev">
+          <i class="i-lucide-bolt"></i>
+          Back
+        </button>
+        <button class="btn text-xs" type="button" data-carousel="next">
+          <i class="i-lucide-rocket"></i>
+          Forward
+        </button>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="overflow-hidden rounded-[2rem] border border-white/10">
+        <ul class="carousel flex w-full translate-x-0 list-none gap-6 p-0 transition-transform duration-500" data-carousel-track>
+          <li class="w-full flex-shrink-0 rounded-[2rem] bg-gradient-to-br from-fuchsia-500/20 to-cyan-400/10 p-10">
+            <p class="text-sm uppercase tracking-[0.3em] text-fuchsia-200">Audio-reactive playground</p>
+            <h3 class="mt-4 font-display text-3xl text-white">Echo Garden</h3>
+            <p class="mt-4 text-sm text-slate-200/80">
+              Generative plant life that blooms based on live audio inputs, blending shaders with procedural storytelling.
+            </p>
+          </li>
+          <li class="w-full flex-shrink-0 rounded-[2rem] bg-gradient-to-br from-purple-500/20 via-fuchsia-500/10 to-cyan-500/10 p-10">
+            <p class="text-sm uppercase tracking-[0.3em] text-fuchsia-200">Speculative interface</p>
+            <h3 class="mt-4 font-display text-3xl text-white">Dream Sequencer</h3>
+            <p class="mt-4 text-sm text-slate-200/80">
+              A voice-driven concept app for choreographing immersive brand rituals powered by AI co-creators.
+            </p>
+          </li>
+          <li class="w-full flex-shrink-0 rounded-[2rem] bg-gradient-to-br from-cyan-400/20 to-blue-500/10 p-10">
+            <p class="text-sm uppercase tracking-[0.3em] text-fuchsia-200">Interactive installation</p>
+            <h3 class="mt-4 font-display text-3xl text-white">Horizon Threads</h3>
+            <p class="mt-4 text-sm text-slate-200/80">
+              A tactile storytelling wall weaving brand narratives with responsive textiles and projection mapping.
+            </p>
+          </li>
+        </ul>
+      </div>
+      <div class="mt-6 flex justify-center gap-2" data-carousel-dots>
+        <button class="h-2 w-8 rounded-full bg-fuchsia-400/60" aria-label="Slide 1"></button>
+        <button class="h-2 w-8 rounded-full bg-white/20" aria-label="Slide 2"></button>
+        <button class="h-2 w-8 rounded-full bg-white/20" aria-label="Slide 3"></button>
+      </div>
+    </div>
+  </div>
+  <script is:inline>
+    const track = document.querySelector('[data-carousel-track]');
+    const dots = Array.from(document.querySelectorAll('[data-carousel-dots] button'));
+    const prev = document.querySelector('[data-carousel="prev"]');
+    const next = document.querySelector('[data-carousel="next"]');
+    let index = 0;
+
+    function updateCarousel() {
+      if (!track) return;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, dotIndex) => {
+        dot.classList.toggle('bg-fuchsia-400/60', dotIndex === index);
+        dot.classList.toggle('bg-white/20', dotIndex !== index);
+      });
+    }
+
+    prev?.addEventListener('click', () => {
+      index = (index - 1 + dots.length) % dots.length;
+      updateCarousel();
+    });
+
+    next?.addEventListener('click', () => {
+      index = (index + 1) % dots.length;
+      updateCarousel();
+    });
+
+    dots.forEach((dot, dotIndex) =>
+      dot.addEventListener('click', () => {
+        index = dotIndex;
+        updateCarousel();
+      })
+    );
+  </script>
+</section>
