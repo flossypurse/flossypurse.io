@@ -1,0 +1,30 @@
+---
+const links = [
+  { name: "About", href: "#about" },
+  { name: "Work", href: "#work" },
+  { name: "Experiments", href: "#experiments" },
+  { name: "Contact", href: "#contact" }
+];
+---
+<header class="sticky top-0 z-40 backdrop-blur-2xl bg-slate-950/70 border-b border-white/10">
+  <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
+    <a href="#top" class="flex items-center gap-3 font-display text-lg md:text-2xl text-white">
+      <span class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-fuchsia-500 to-cyan-400 text-slate-950 font-bold">FP</span>
+      <span class="tracking-tight">Flossy Purse</span>
+    </a>
+    <div class="hidden gap-6 md:flex">
+      {links.map((link) => (
+        <a class="text-sm uppercase tracking-[0.3em] text-slate-300 hover:text-white transition-colors" href={link.href}>
+          {link.name}
+        </a>
+      ))}
+    </div>
+    <a
+      class="btn text-xs md:text-sm"
+      href="mailto:hello@flossypurse.io"
+    >
+      <i class="i-lucide-mail"></i>
+      Let's collaborate
+    </a>
+  </nav>
+</header>
