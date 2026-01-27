@@ -1,29 +1,49 @@
-# Flossy Purse · Creative Technologist
+# flossypurse.io
 
-A playful, neon-bright personal brand & portfolio site built with [Astro](https://astro.build) and [UnoCSS](https://unocss.dev).
+personal internet space for cully wakelin
 
-## Getting started
+## what is this
 
-```bash
-npm install
-npm run dev
-```
+a minimal landing page with geometric animations. no linkedin energy, just presence.
 
-The site is a single-page, app-like experience featuring:
+built with [astro](https://astro.build) and [unocss](https://unocss.dev). deployed to vercel.
 
-- Hero introduction with bold call-to-actions
-- Story-driven about section and highlight metrics
-- Interactive project showcase with card rotation
-- Carousel of experimental lab projects
-- Contact call-to-action with quick links
-
-## Building for production
+## dev
 
 ```bash
-npm run build
-npm run preview
+bun install
+bun run dev
 ```
 
-## Customizing UnoCSS
+visit http://localhost:4321
 
-Utility classes, design tokens, and shortcuts live in [`uno.config.ts`](./uno.config.ts). Global base styles are defined in [`src/styles/global.css`](./src/styles/global.css).
+## build
+
+```bash
+bun run build
+bun run preview
+```
+
+## deploy
+
+pushes to main auto-deploy via vercel
+
+## customizing
+
+**change the text:**
+edit `src/components/SimpleHero.astro`
+
+**change animations:**
+edit `src/components/GeometricCanvas.astro` - adjust colors, shapes, speeds
+
+**change colors:**
+edit `uno.config.ts` - update the brand colors
+
+**add stuff:**
+this is intentionally minimal. if you want to add sections, create new components in `src/components/` and add them to `src/pages/index.astro`
+
+## vibe
+
+"i vibe code with AI and get shit done" - built with claude
+
+© 2024 cully wakelin

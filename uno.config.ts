@@ -4,20 +4,22 @@ import { presetScrollbar } from "unocss-preset-scrollbar";
 export default defineConfig({
   shortcuts: {
     "app-shell": "min-h-screen bg-slate-950 text-slate-100 font-sans",
-    "card": "bg-slate-900/70 border border-slate-700/60 rounded-3xl shadow-xl shadow-fuchsia-500/20 backdrop-blur-lg",
-    "chip": "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-semibold tracking-wide bg-fuchsia-600/20 text-fuchsia-200 border border-fuchsia-500/40",
-    "btn": "inline-flex items-center gap-2 rounded-full px-5 py-2 font-semibold uppercase tracking-widest text-sm transition-transform transform hover:-translate-y-1 active:translate-y-0 bg-fuchsia-500 text-slate-950 shadow-lg shadow-fuchsia-500/40",
+    "card": "bg-slate-900/50 border border-slate-800/60 rounded-2xl shadow-xl backdrop-blur-sm",
+    "chip": "inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm font-medium bg-sky-500/10 text-sky-300 border border-sky-500/30",
+    "btn": "inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-semibold text-sm transition-all hover:scale-105 active:scale-100 bg-sky-500 text-white shadow-lg hover:shadow-sky-500/50",
+    "btn-secondary": "inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-semibold text-sm transition-all hover:scale-105 active:scale-100 border-2 border-sky-500 text-sky-300 hover:bg-sky-500/10",
     "glass": "backdrop-blur-xl bg-white/5 border border-white/10"
   },
   theme: {
     fontFamily: {
       sans: "'Space Grotesk', 'Inter', ui-sans-serif, system-ui",
-      display: "'Clash Display', 'Space Grotesk', ui-sans-serif"
+      display: "'Space Grotesk', ui-sans-serif"
     },
     colors: {
       brand: {
-        neon: "#f472ff",
-        glow: "#22d3ee"
+        primary: "#0ea5e9",
+        secondary: "#06b6d4",
+        accent: "#3b82f6"
       }
     }
   },

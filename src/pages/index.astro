@@ -1,21 +1,11 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
-import NavigationBar from "@components/NavigationBar.astro";
-import HeroSection from "@components/HeroSection.astro";
-import AboutSection from "@components/AboutSection.astro";
-import ProjectShowcase from "@components/ProjectShowcase.astro";
-import ExperienceCarousel from "@components/ExperienceCarousel.astro";
-import ContactSection from "@components/ContactSection.astro";
-import SiteFooter from "@components/SiteFooter.astro";
+import GeometricCanvas from "@components/GeometricCanvas.astro";
+import SimpleHero from "@components/SimpleHero.astro";
 ---
-<BaseLayout title="Flossy Purse · Creative Technologist" description="Bold, playful digital experiences for visionary brands.">
-  <NavigationBar />
-  <main class="flex-1 space-y-12">
-    <HeroSection />
-    <AboutSection />
-    <ProjectShowcase />
-    <ExperienceCarousel />
-    <ContactSection />
+<BaseLayout title="cully wakelin (@flossypurse)" description="i vibe code with AI and get shit done">
+  <GeometricCanvas />
+  <main>
+    <SimpleHero />
   </main>
-  <SiteFooter />
 </BaseLayout>

@@ -2,7 +2,7 @@
 import "uno.css";
 import "../styles/global.css";
 
-const { title = "Flossy Purse", description = "Creative technologist and design engineer" } = Astro.props;
+const { title = "cully wakelin (@flossypurse)", description = "i vibe code with AI and get shit done" } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en" class="app-shell">
@@ -22,11 +22,6 @@ const { title = "Flossy Purse", description = "Creative technologist and design 
   <body class="overflow-x-hidden">
     <div class="relative min-h-screen flex flex-col">
       <slot />
-    </div>
-    <div class="pointer-events-none fixed inset-0 -z-10 opacity-70">
-      <div class="absolute -top-40 -left-20 h-96 w-96 rounded-full bg-fuchsia-500/30 blur-3xl"></div>
-      <div class="absolute top-1/2 -translate-y-1/2 right-0 h-[420px] w-[420px] rounded-full bg-cyan-400/20 blur-3xl"></div>
-      <div class="absolute bottom-0 left-1/3 h-64 w-64 rounded-full bg-purple-500/25 blur-3xl"></div>
     </div>
   </body>
 </html>

@@ -1,110 +1,84 @@
 ---
 const projects = [
   {
-    id: "luna",
-    name: "Luna Lab",
-    tagline: "Immersive AI-driven brand playground",
+    id: "resonatehq-io",
+    name: "resonatehq.io",
+    tagline: "Company website for Resonate HQ",
     description:
-      "Crafted a modular storytelling platform with live generative visuals and sound-reactive identity moments for a global fashion collective.",
-    roles: ["Creative direction", "Experience design", "WebGL engineering"],
-    link: "https://example.com/luna"
+      "Built the marketing site for Resonate with interactive demos showcasing durable execution concepts. Features custom animations, code examples, and a spectrum visualizer that brings the framework to life.",
+    tags: ["Next.js", "TypeScript", "React", "Vercel"],
+    link: "https://resonatehq.io"
   },
   {
-    id: "pulse",
-    name: "Pulse Studio",
-    tagline: "Sonic brand OS for music tech startup",
+    id: "docs-resonatehq-io",
+    name: "docs.resonatehq.io",
+    tagline: "Comprehensive framework documentation",
     description:
-      "Designed a responsive sound design toolkit with tactile UI and real-time collaboration tools for producers around the world.",
-    roles: ["Product strategy", "Interface design", "Design systems"],
-    link: "https://example.com/pulse"
+      "Created and maintain the documentation site for Resonate, including getting started guides, API references, tutorials, and deployment guides. Built with Docusaurus and deployed via Vercel.",
+    tags: ["Docusaurus", "MDX", "TypeScript", "Technical Writing"],
+    link: "https://docs.resonatehq.io"
   },
   {
-    id: "orbit",
-    name: "Orbit Atlas",
-    tagline: "Interactive data story for climate explorers",
+    id: "agent-skills",
+    name: "Resonate Agent Skills",
+    tagline: "Claude skills for durable execution",
     description:
-      "Built an interactive documentary experience blending cinematic scroll, data dramatization, and playful mini-simulations.",
-    roles: ["Narrative design", "Creative coding", "Motion systems"],
-    link: "https://example.com/orbit"
+      "Developed specialized agent skills that help Claude understand and build with Resonate. Covers TypeScript development, debugging, deployment, and advanced reasoning about distributed systems.",
+    tags: ["AI", "Claude", "Developer Tools", "Documentation"],
+    link: "https://docs.resonatehq.io"
+  },
+  {
+    id: "examples",
+    name: "Example Applications",
+    tagline: "Real-world Resonate patterns",
+    description:
+      "Building a library of example applications demonstrating AI agents, workflows, pipelines, and services. Each example shows how to solve real problems with durable execution.",
+    tags: ["TypeScript", "Resonate SDK", "Patterns", "Examples"],
+    link: "https://github.com/resonatehq-examples"
   }
 ];
 ---
 <section id="work" class="mx-auto mt-24 w-full max-w-6xl px-6">
   <div class="flex flex-col gap-10">
-    <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <div class="flex flex-col gap-4">
       <div>
-        <h2 class="section-title">Selected adventures</h2>
+        <h2 class="section-title">Projects</h2>
         <p class="section-subtitle">
-          Fluid, cinematic, and delightfully extra. Here are a few recent collaborations shaping playful futures.
+          Building the web presence, documentation, and developer tools for Resonate HQ.
         </p>
       </div>
-      <div class="flex gap-3">
-        <button
-          class="btn text-xs"
-          type="button"
-          data-showcase="next"
-        >
-          <i class="i-lucide-rocket"></i>
-          Shuffle magic
-        </button>
-        <a class="btn text-xs" href="mailto:hello@flossypurse.io?subject=Let%27s%20build%20something%20magical">
-          Full portfolio deck
-        </a>
-      </div>
     </div>
-    <div class="grid gap-6 md:grid-cols-3" data-showcase-grid>
+    <div class="grid gap-6 md:grid-cols-2" data-showcase-grid>
       {projects.map((project, index) => (
         <article
-          class={`card group flex flex-col justify-between rounded-[2.25rem] p-8 transition-all duration-500 hover:-translate-y-2 hover:border-fuchsia-400/60 hover:shadow-fuchsia-500/40 ${index === 0 ? 'ring-2 ring-fuchsia-400/60' : ''}`}
+          class={`card group flex flex-col justify-between rounded-2xl p-8 transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/60 hover:shadow-xl hover:shadow-sky-500/20`}
           data-card={project.id}
         >
           <div class="space-y-4">
             <div class="flex items-center justify-between">
-              <span class="chip bg-fuchsia-500/20 text-fuchsia-200">{String(index + 1).padStart(2, '0')}</span>
-              <i class="i-lucide-external-link text-slate-300/70"></i>
+              <span class="chip">{String(index + 1).padStart(2, '0')}</span>
+              <i class="i-lucide-external-link text-slate-400"></i>
             </div>
-            <h3 class="font-display text-3xl text-white">{project.name}</h3>
-            <p class="text-sm uppercase tracking-[0.3em] text-cyan-200">{project.tagline}</p>
-            <p class="text-sm text-slate-300/80">{project.description}</p>
+            <h3 class="font-display text-2xl text-white">{project.name}</h3>
+            <p class="text-sm font-medium text-sky-300">{project.tagline}</p>
+            <p class="text-sm text-slate-300 leading-relaxed">{project.description}</p>
           </div>
-          <div class="mt-6 space-y-2 text-xs font-semibold uppercase tracking-[0.3em] text-slate-400/80">
-            {project.roles.map((role) => (
-              <p class="rounded-full border border-white/10 bg-white/5 px-4 py-2 text-slate-200/80">{role}</p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            {project.tags.map((tag) => (
+              <span class="text-xs px-3 py-1 rounded-full bg-slate-800/50 text-slate-400 border border-slate-700/50">{tag}</span>
             ))}
           </div>
-          <a class="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-fuchsia-200" href={project.link}>
-            Dive into case study
+          <a
+            class="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 hover:text-sky-200 transition-colors"
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View project
             <i class="i-lucide-external-link"></i>
           </a>
         </article>
       ))}
     </div>
   </div>
-  <script is:inline>
-    const grid = document.querySelector('[data-showcase-grid]');
-    const cards = Array.from(grid?.querySelectorAll('[data-card]') ?? []);
-    const button = document.querySelector('[data-showcase="next"]');
-
-    function rotateCards() {
-      if (!grid || cards.length === 0) return;
-      const first = cards.shift();
-      if (first) {
-        cards.push(first);
-        cards.forEach((card, index) => {
-          card.style.setProperty('--order', String(index));
-        });
-        grid.append(first);
-        grid
-          .querySelectorAll('[data-card]')
-          .forEach((el, index) => {
-            el.classList.toggle('ring-2', index === 0);
-            el.classList.toggle('ring-fuchsia-400/60', index === 0);
-          });
-      }
-    }
-
-    button?.addEventListener('click', () => {
-      rotateCards();
-    });
-  </script>
 </section>
