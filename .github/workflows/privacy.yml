@@ -1,0 +1,90 @@
+name: privacy
+
+# Belt-and-suspenders: catches secrets and workspace-crumbs that local pre-commit
+# missed (e.g., commits made with --no-verify, or from a clone without
+# core.hooksPath configured). See ~/money-workspace/PRIVACY.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Install gitleaks
+        run: |
+          curl -sSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz \
+            | sudo tar -xz -C /usr/local/bin gitleaks
+      - name: Write workspace gitleaks config
+        # Keep in sync with .githooks/gitleaks.toml
+        run: |
+          cat > /tmp/gitleaks.toml <<'EOF'
+          [extend]
+          useDefault = true
+
+          [[rules]]
+          id = "anthropic-api-key"
+          description = "Anthropic API key"
+          regex = '''sk-ant-(api|admin)\d{2}-[A-Za-z0-9_-]{40,}'''
+          keywords = ["sk-ant-"]
+
+          [[rules]]
+          id = "openai-api-key"
+          description = "OpenAI API key"
+          regex = '''sk-(proj-[A-Za-z0-9_-]{60,}|or-v1-[A-Za-z0-9_-]{40,}|[A-Za-z0-9]{48})'''
+          keywords = ["sk-"]
+
+          [[rules]]
+          id = "postgres-url-with-credentials"
+          description = "PostgreSQL connection URL with embedded credentials"
+          regex = '''postgres(?:ql)?://[A-Za-z0-9._%+-]+:[^\s@/]{4,}@'''
+          keywords = ["postgres://", "postgresql://"]
+          EOF
+      - name: Scan for secrets
+        run: gitleaks dir --config /tmp/gitleaks.toml -v --redact --no-banner --exit-code 1 .
+
+  workspace-crumbs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan tracked content
+        env:
+          # Keep in sync with .githooks/_pattern.sh
+          PATTERN: '(^|[^[:alnum:]_-])(cortex|grove-athletics|safe-kitchen|daytrading|inner-dmoons)/|resonate/(docs|cr-aim|company-corpus)/|(^|[^[:alnum:]_-])(tools|dashboard|finance|marketing)/[a-z][a-zA-Z0-9_./-]*\.(md|mdx|ts|tsx|js|jsx|mjs|cjs|py|sh|toml|yml|yaml|rs|go)\b|§[0-9]+\.[0-9]+|\b(Grove Athletics|Safe Kitchen|Inner D-Moons|Hustle Agent)\b'
+          # Allowlist: this workflow file embeds the regex source, which contains
+          # the bare-name alternation literally. Exempt lines containing all four.
+          ALLOWLIST: 'Grove Athletics.*Safe Kitchen.*Inner D-Moons.*Hustle Agent'
+        run: |
+          # Scan tracked files only (skips node_modules, build output, etc.)
+          matches=$(git ls-files -z | xargs -0 grep -nE "$PATTERN" 2>/dev/null | grep -vE "$ALLOWLIST" || true)
+          if [ -n "$matches" ]; then
+            echo "::error::Workspace-internal references found in this PUBLIC repo."
+            echo ""
+            echo "$matches" | head -30
+            echo ""
+            echo "These files reference workspace-internal paths or section markers"
+            echo "that should not appear in public repos. Fix the references, or update"
+            echo "the workspace allowlist if it is a known-safe match."
+            exit 1
+          fi
+      - name: Scan PR title, body, branch name
+        if: github.event_name == 'pull_request'
+        env:
+          # Keep in sync with .githooks/_pattern.sh
+          PATTERN: '(^|[^[:alnum:]_-])(cortex|grove-athletics|safe-kitchen|daytrading|inner-dmoons)/|resonate/(docs|cr-aim|company-corpus)/|(^|[^[:alnum:]_-])(tools|dashboard|finance|marketing)/[a-z][a-zA-Z0-9_./-]*\.(md|mdx|ts|tsx|js|jsx|mjs|cjs|py|sh|toml|yml|yaml|rs|go)\b|§[0-9]+\.[0-9]+|\b(Grove Athletics|Safe Kitchen|Inner D-Moons|Hustle Agent)\b'
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          BRANCH: ${{ github.head_ref }}
+        run: |
+          text="$PR_TITLE"$'\n'"$PR_BODY"$'\n'"$BRANCH"
+          if matches=$(echo "$text" | grep -nE "$PATTERN"); then
+            echo "::error::Workspace-internal references in PR title, body, or branch name."
+            echo ""
+            echo "$matches"
+            exit 1
+          fi
