@@ -1,92 +1,178 @@
 ---
-// Minimal centered hero
+const projects = [
+  {
+    name: "Tamrack",
+    blurb: "Open economic data for Alberta's 340 municipalities",
+    href: "https://tamrack.ca",
+  },
+];
+
+const writing = [
+  {
+    title: "Turning AI-generated brand marks into production SVGs",
+    date: "May 19, 2026",
+    href: "https://www.smokesomepaint.com/p/turning-ai-generated-brand-marks",
+  },
+  {
+    title: "We are moving towards software-on-demand",
+    date: "May 8, 2026",
+    href: "https://www.smokesomepaint.com/p/we-are-moving-towards-software-on",
+  },
+  {
+    title: "I built an AI newspaper that runs itself every morning",
+    date: "Apr 13, 2026",
+    href: "https://www.smokesomepaint.com/p/i-built-an-ai-newspaper-that-runs",
+  },
+  {
+    title: "A gap in Alberta's open data",
+    date: "Apr 12, 2026",
+    href: "https://www.smokesomepaint.com/p/a-gap-in-albertas-open-data",
+  },
+  {
+    title: "Is suspension a primitive or a trick?",
+    date: "Apr 8, 2026",
+    href: "https://www.smokesomepaint.com/p/is-suspension-a-primitive-or-a-trick",
+  },
+  {
+    title: "Vibe coding with 15 years of context",
+    date: "Apr 7, 2026",
+    href: "https://www.smokesomepaint.com/p/vibe-coding-with-15-years-of-context",
+  },
+];
 ---
-<section class="relative z-10 min-h-screen flex items-center justify-center px-6">
-  <div class="max-w-3xl mx-auto text-center space-y-8">
-    <div class="space-y-4">
-      <h1 class="text-6xl md:text-8xl font-bold text-white tracking-tight">
-        hey, i'm cully
-      </h1>
-      <p class="text-xl md:text-2xl text-sky-300 font-medium">
-        (@flossypurse)
+<section class="relative z-10 min-h-screen flex items-center px-6 py-24">
+  <div class="max-w-3xl mx-auto w-full space-y-24">
+
+    <div class="space-y-7">
+      <div class="w-16 h-1 bg-sky-500"></div>
+
+      <div class="space-y-3">
+        <h1 class="font-display text-6xl md:text-8xl font-bold text-white tracking-tight leading-[0.95]">
+          Cully Wakelin
+        </h1>
+        <p class="text-sm text-slate-500 tracking-wide">
+          @flossypurse &middot; Parkland County, Alberta
+        </p>
+      </div>
+
+      <p class="text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl">
+        I've been doing software for about fifteen years. Currently <a href="https://resonatehq.io" target="_blank" rel="noopener" class="text-sky-300 hover:text-sky-200 transition-colors">@resonatehq.io</a>, building durable agentic runtimes.
       </p>
     </div>
 
-    <div class="space-y-4 max-w-2xl mx-auto">
-      <p class="text-xl md:text-2xl text-slate-300 leading-relaxed">
-        i'm a software startup veteran
-      </p>
-      <p class="text-2xl md:text-3xl text-slate-200 leading-relaxed font-medium">
-        i vibe code with ai and get shit done
-      </p>
-    </div>
-
-    <div class="flex flex-wrap items-center justify-center gap-6 pt-8">
-      <a
-        href="https://www.linkedin.com/in/cullywakelin/"
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-300 hover:bg-sky-500/20 hover:border-sky-400/50 transition-all text-lg font-medium"
-      >
-        <i class="i-lucide-linkedin text-xl"></i>
-        linkedin
-      </a>
-      <a
-        href="https://bsky.app/profile/flossypurse.bsky.social"
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all text-lg font-medium"
-      >
-        <i class="i-lucide-cloud text-xl"></i>
-        bluesky
-      </a>
-      <a
-        href="https://x.com/flossypurse"
-        target="_blank"
-        rel="noopener"
-        class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-300 hover:bg-blue-500/20 hover:border-blue-400/50 transition-all text-lg font-medium"
-      >
-        <i class="i-lucide-twitter text-xl"></i>
-        x / twitter
-      </a>
-    </div>
-
-    <div class="pt-12 space-y-3">
-      <p class="text-xs uppercase tracking-widest text-slate-500 font-medium">side projects</p>
-      <div class="flex flex-wrap items-center justify-center gap-4">
-        <a
-          href="https://albertapulsecheck.ca"
-          target="_blank"
-          rel="noopener"
-          class="group px-5 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-sky-400/40 hover:bg-sky-500/10 transition-all"
-        >
-          <p class="text-sm font-semibold text-slate-200 group-hover:text-sky-300 transition-colors">Alberta Pulse</p>
-          <p class="text-xs text-slate-500">economic data for Alberta</p>
-        </a>
-        <a
-          href="https://pitchroots.ca"
-          target="_blank"
-          rel="noopener"
-          class="group px-5 py-3 rounded-xl bg-white/5 border border-white/10 hover:border-emerald-400/40 hover:bg-emerald-500/10 transition-all"
-        >
-          <p class="text-sm font-semibold text-slate-200 group-hover:text-emerald-300 transition-colors">PitchRoots</p>
-          <p class="text-xs text-slate-500">community soccer platform</p>
-        </a>
-        <div class="group px-5 py-3 rounded-xl bg-white/5 border border-white/10 border-dashed opacity-60">
-          <p class="text-sm font-semibold text-slate-200">Smoke Some Paint</p>
-          <p class="text-xs text-slate-500">coming soon</p>
-        </div>
-        <div class="group px-5 py-3 rounded-xl bg-white/5 border border-white/10 border-dashed opacity-60">
-          <p class="text-sm font-semibold text-slate-200">Survive the Dark Forest</p>
-          <p class="text-xs text-slate-500">coming soon</p>
-        </div>
+    <div class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-1 h-4 bg-sky-500"></div>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-300 font-semibold">Projects</p>
+        <div class="h-px bg-slate-800 flex-1"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        {projects.map((project) => {
+          const Tag = project.href ? "a" : "div";
+          const props = project.href
+            ? { href: project.href, target: "_blank", rel: "noopener" }
+            : {};
+          return (
+            <Tag
+              {...props}
+              class={`group block px-5 py-4 bg-white/5 border border-white/10 ${project.href ? "hover:border-sky-400/40 hover:bg-white/10 cursor-pointer" : "opacity-70"} transition-all`}
+            >
+              <div class="flex items-start justify-between gap-3">
+                <div class="space-y-1">
+                  <p class="text-base font-semibold text-slate-100 group-hover:text-sky-300 transition-colors">{project.name}</p>
+                  <p class="text-sm text-slate-400 leading-snug">{project.blurb}</p>
+                </div>
+                {project.href && (
+                  <i class="i-lucide-external-link text-slate-500 group-hover:text-sky-400 transition-colors text-sm mt-1"></i>
+                )}
+              </div>
+            </Tag>
+          );
+        })}
       </div>
     </div>
 
-    <div class="pt-4">
-      <p class="text-sm text-slate-500">
-        currently @ <a href="https://resonatehq.io" target="_blank" rel="noopener" class="text-sky-400/60 hover:text-sky-400 transition-colors">resonatehq</a>
-      </p>
+    <div class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-1 h-4 bg-sky-500"></div>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-300 font-semibold">Recent Writing</p>
+        <div class="h-px bg-slate-800 flex-1"></div>
+      </div>
+      <ul class="space-y-1">
+        {writing.map((post) => (
+          <li>
+            <a
+              href={post.href}
+              target="_blank"
+              rel="noopener"
+              class="group flex flex-col sm:flex-row sm:items-baseline sm:justify-between sm:gap-4 py-3 px-2 border-b border-slate-800/60 hover:border-sky-500/40 transition-colors"
+            >
+              <span class="text-base md:text-lg text-slate-200 group-hover:text-sky-300 transition-colors leading-snug">
+                {post.title}
+              </span>
+              <span class="text-xs text-slate-500 font-medium tracking-wide sm:whitespace-nowrap mt-1 sm:mt-0">{post.date}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="pt-2">
+        <a
+          href="https://smokesomepaint.com"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-sky-300 transition-colors"
+        >
+          Read more on Substack
+          <i class="i-lucide-external-link text-xs"></i>
+        </a>
+      </div>
     </div>
+
+    <div class="space-y-6">
+      <div class="flex items-center gap-3">
+        <div class="w-1 h-4 bg-sky-500"></div>
+        <p class="text-xs uppercase tracking-[0.2em] text-slate-300 font-semibold">Elsewhere</p>
+        <div class="h-px bg-slate-800 flex-1"></div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="https://www.linkedin.com/in/cullywakelin/"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-5 py-3 bg-sky-500/10 border border-sky-500/30 text-sky-300 hover:bg-sky-500/20 hover:border-sky-400/50 transition-all text-sm font-medium"
+        >
+          <i class="i-lucide-linkedin text-base"></i>
+          LinkedIn
+        </a>
+        <a
+          href="https://bsky.app/profile/flossypurse.bsky.social"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-5 py-3 bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 hover:border-cyan-400/50 transition-all text-sm font-medium"
+        >
+          <i class="i-lucide-cloud text-base"></i>
+          Bluesky
+        </a>
+        <a
+          href="https://x.com/flossypurse"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-5 py-3 bg-blue-500/10 border border-blue-500/30 text-blue-300 hover:bg-blue-500/20 hover:border-blue-400/50 transition-all text-sm font-medium"
+        >
+          <i class="i-lucide-twitter text-base"></i>
+          X
+        </a>
+        <a
+          href="https://smokesomepaint.com"
+          target="_blank"
+          rel="noopener"
+          class="inline-flex items-center gap-2 px-5 py-3 bg-violet-500/10 border border-violet-500/30 text-violet-300 hover:bg-violet-500/20 hover:border-violet-400/50 transition-all text-sm font-medium"
+        >
+          <i class="i-lucide-pen-tool text-base"></i>
+          Substack
+        </a>
+      </div>
+    </div>
+
   </div>
 </section>

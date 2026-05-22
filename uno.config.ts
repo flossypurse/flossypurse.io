@@ -13,7 +13,8 @@ export default defineConfig({
   theme: {
     fontFamily: {
       sans: "'Space Grotesk', 'Inter', ui-sans-serif, system-ui",
-      display: "'Space Grotesk', ui-sans-serif"
+      display: "'Clash Display', 'Space Grotesk', ui-sans-serif",
+      mono: "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace"
     },
     colors: {
       brand: {

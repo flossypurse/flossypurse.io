@@ -2,7 +2,7 @@
 import "uno.css";
 import "../styles/global.css";
 
-const { title = "cully wakelin (@flossypurse)", description = "i vibe code with AI and get shit done" } = Astro.props;
+const { title = "Cully Wakelin (@flossypurse)", description = "Cully Wakelin's personal site. Software in rural Alberta, currently at Resonate. Projects and writing." } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="en" class="app-shell">
@@ -12,8 +12,13 @@ const { title = "cully wakelin (@flossypurse)", description = "i vibe code with 
     <meta name="description" content={description} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Clash+Display:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
